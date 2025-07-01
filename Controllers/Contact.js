@@ -11,7 +11,7 @@ exports.addContact=async(req,res)=>{
         await newContact.save()
         res.status(200).send({Msg : 'Contact added',newContact})
     } catch (error) {
-        res.status(500).send('Could not add contact')
+        res.status(500).send('Could not add contact',error)
     }
 }
 
@@ -20,7 +20,7 @@ exports.readContacts=async(req,res)=>{
         const contacts = await Contact.find()
         res.status(200).send({Msg : "List of contacts",contacts})
     } catch (error) {
-        res.status(500).send('Could not find contacts')
+        res.status(500).send('Could not find contacts',error)
     }
 }
 
@@ -31,7 +31,7 @@ exports.deleteContacts=async(req,res)=>{
         await Contact.findByIdAndDelete(id)
         res.status(200).send({Msg : 'Contact deleted'})
     } catch (error) {
-        res.status(500).send('Could not delete contact')
+        res.status(500).send('Could not delete contact',error)
     }
 }
 
@@ -41,7 +41,7 @@ exports.updateContact=async(req,res)=>{
         await Contact.findByIdAndUpdate(id,{$set : req.body})
         res.status(200).send({Msg : "Contact updated"})
     } catch (error) {
-        res.status(500).send('Could not update contact')
+        res.status(500).send('Could not update contact',error)
     }
 }
 
@@ -51,6 +51,6 @@ exports.readContact=async(req,res)=>{
         const found = await Contact.findById(id)
         res.status(200).send({Msg : 'Contact founded',found})
     } catch (error) {
-        res.status(500).send('Could not find contact')
+        res.status(500).send('Could not find contact',error)
     }
 }
