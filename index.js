@@ -15,6 +15,10 @@ ConnectDB()
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+  res.send('Backend API is running');
+});
+
 app.use('/api/Contact',contactRouter)
 
 
