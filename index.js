@@ -4,7 +4,10 @@ const contactRouter = require('./Routes/Contact')
 const cors = require('cors')
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: 'https://hilarious-pasca-6914ca.netlify.app',
+  credentials: true 
+}))
 
 require('dotenv').config()
 
